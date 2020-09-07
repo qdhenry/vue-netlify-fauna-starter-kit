@@ -4,8 +4,10 @@ import store from "./store";
 
 Vue.use(VueRouter);
 
-const routes = [
-  { path: "/", redirect: "/home" },
+const routes = [{
+    path: "/",
+    redirect: "/home"
+  },
   {
     path: "/home",
     name: "home",
@@ -15,43 +17,57 @@ const routes = [
     path: "/journals",
     name: "journals",
     component: () => import("./pages/AllJournals.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/dashboard",
     name: "dashboard",
     component: () => import("./pages/Dashboard.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/products",
     name: "products",
     component: () => import("./pages/Products.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/history",
     name: "history",
     component: () => import("./pages/History.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/settings",
     name: "settings",
     component: () => import("./pages/AccountSettings.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/journals/:id/posts",
     name: "posts",
     component: () => import("./pages/AllPosts.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/profile",
     name: "profile",
     component: () => import("./pages/Profile.vue"),
-    meta: { authRequired: true }
+    meta: {
+      authRequired: true
+    }
   },
   {
     path: "/recover",
@@ -77,7 +93,12 @@ router.beforeEach((to, from, next) => {
   }
   // The page requested is both secured and there is no logged in user detected. Sorry mate. No entry!
   console.warn("Page restricted, you need to login");
-  next({ name: "home", query: { redirectFrom: to.fullPath } });
+  next({
+    name: "home",
+    query: {
+      redirectFrom: to.fullPath
+    }
+  });
 });
 
 export default router;
