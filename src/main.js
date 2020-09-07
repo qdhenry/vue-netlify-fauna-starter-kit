@@ -1,13 +1,22 @@
 import Vue from "vue";
+import Vuetify from "vuetify";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import attemptToAuthoriseTokens from "./helpers/authorise-tokens";
+import "vuetify/dist/vuetify.min.css";
 
+Vue.use(Vuetify);
+const vuetify = new Vuetify({
+  theme: {
+    dark: false
+  }
+});
 new Vue({
   el: "#app",
   render: h => h(App),
   router,
+  vuetify,
   store
 });
 

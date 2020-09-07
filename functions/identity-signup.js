@@ -7,15 +7,16 @@ This function is triggered on a successfully email signup. This does not get tri
 about event-triggered functions here: https://docs.netlify.com/functions/trigger-on-events/#available-triggers 
 */
 
-"use strict";
-const faunadb = require("faunadb");
-const generator = require("generate-password");
+'use strict'
+const faunadb = require('faunadb')
+const generator = require('generate-password')
 
 /* configure faunaDB Client with our secret */
-const q = faunadb.query;
+const q = faunadb.query
 const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SERVER_SECRET
-});
+	secret: process.env.FAUNADB_SERVER_SECRET,
+})
+console.log('CLIENT', client)
 
 /**
  * create and store Netlify metadata in a new user FaunaDB record.
@@ -35,17 +36,17 @@ const client = new faunadb.Client({
  */
 
 function createDbUser(userData, password) {
-  return client.query(
-    q.Create(q.Collection("users"), {
-      credentials: {
-        password: password
-      },
-      data: {
-        id: userData.id,
-        user_metadata: userData.user_metadata
-      }
-    })
-  );
+	return client.query(
+		q.Create(q.Collection('users'), {
+			credentials: {
+				password: password,
+			},
+			data: {
+				id: userData.id,
+				user_metadata: userData.user_metadata,
+			},
+		})
+	)
 }
 
 /**
@@ -55,8 +56,8 @@ function createDbUser(userData, password) {
  * @return {promise <object>} - FaunaDB response object
  */
 function obtainToken(user, password) {
-  console.log("Generating new DB token");
-  return client.query(q.Login(q.Select("ref", user), { password }));
+	console.log('Generating new DB token')
+	return client.query(q.Login(q.Select('ref', user), { password }))
 }
 
 /**
@@ -64,40 +65,40 @@ function obtainToken(user, password) {
  * @return {string} - randomly generated password
  */
 function generatePassword() {
-  return generator.generate({
-    length: 10,
-    numbers: true
-  });
+	return generator.generate({
+		length: 10,
+		numbers: true,
+	})
 }
 
 function handler(event, context, callback) {
-  let payload = JSON.parse(event.body);
-  let userData = payload.user;
-  const password = generatePassword();
+	let payload = JSON.parse(event.body)
+	let userData = payload.user
+	const password = generatePassword()
 
-  createDbUser(userData, password)
-    .then(user => obtainToken(user, password))
-    .then(key => {
-      console.log("Successfully created DB account");
-      callback(null, {
-        //If return status is 200 or 204 the function will get blocked
-        statusCode: 200,
-        //the return body will update the netlify user
-        body: JSON.stringify({ app_metadata: { db_token: key.secret } })
-      });
-    })
-    .catch(e => {
-      console.error("Somethings gone wrong ", e);
-      callback(null, {
-        statusCode: 500,
-        body: JSON.stringify({ error: e })
-      });
-    });
+	createDbUser(userData, password)
+		.then((user) => obtainToken(user, password))
+		.then((key) => {
+			console.log('Successfully created DB account')
+			callback(null, {
+				//If return status is 200 or 204 the function will get blocked
+				statusCode: 200,
+				//the return body will update the netlify user
+				body: JSON.stringify({ app_metadata: { db_token: key.secret } }),
+			})
+		})
+		.catch((e) => {
+			console.error('Somethings gone wrong ', e)
+			callback(null, {
+				statusCode: 500,
+				body: JSON.stringify({ error: e }),
+			})
+		})
 }
 
 module.exports = {
-  handler: handler,
-  createDbUser: createDbUser,
-  obtainToken: obtainToken,
-  generatePassword: generatePassword
-};
+	handler: handler,
+	createDbUser: createDbUser,
+	obtainToken: obtainToken,
+	generatePassword: generatePassword,
+}
