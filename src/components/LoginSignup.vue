@@ -1,13 +1,26 @@
 <template>
-  <div class="login-page">
+  <v-row
+    class="login-page"
+    align="center"
+    justify="center"
+    style="min-height:500px"
+  >
     <div class="form">
-      <form
+      <v-form
         v-if="mode === 'register'"
         class="register-form stack"
         @keyup.enter="signup()"
       >
+        <v-container>
+          <v-row>
+            <v-col cols="12" sm="6" md="3">
+              <v-text-field label="Regular"></v-text-field>
+            </v-col>
+          </v-row>
+        </v-container>
         <h2>👋 Register Here</h2>
         <label for="name">Name</label>
+        <v-text-field id="name" v-model="crendentials.name"></v-text-field>
         <input
           id="name"
           v-model="crendentials.name"
@@ -31,13 +44,12 @@
           :type="passwordType"
           placeholder="******"
         />
-
         <button type="button" @click="signup()">Sign Up</button>
         <p class="message">
           Already registered?
           <a href="#" @click="toggleMode">Sign In</a>
         </p>
-      </form>
+      </v-form>
 
       <form
         v-if="mode === 'login'"
@@ -78,7 +90,7 @@
         </div>
       </form>
     </div>
-  </div>
+  </v-row>
 </template>
 
 <script>
@@ -151,13 +163,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-label {
-  padding: 10px 5px 10px 0;
-}
-
-button {
-  margin-top: 10px;
-}
-</style>

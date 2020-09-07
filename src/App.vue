@@ -35,4 +35,8 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 }
+span.v-btn__content {
+  font-family: "futura-pt", "Arial Narrow" !important;
+  font-weight: 500;
+}
 </style>

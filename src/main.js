@@ -5,6 +5,7 @@ import router from "./router";
 import store from "./store";
 import attemptToAuthoriseTokens from "./helpers/authorise-tokens";
 import "vuetify/dist/vuetify.min.css";
+import "@mdi/font/css/materialdesignicons.css";
 
 Vue.use(Vuetify);
 const vuetify = new Vuetify({

@@ -18,6 +18,30 @@ const routes = [
     meta: { authRequired: true }
   },
   {
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("./pages/Dashboard.vue"),
+    meta: { authRequired: true }
+  },
+  {
+    path: "/products",
+    name: "products",
+    component: () => import("./pages/Products.vue"),
+    meta: { authRequired: true }
+  },
+  {
+    path: "/history",
+    name: "history",
+    component: () => import("./pages/History.vue"),
+    meta: { authRequired: true }
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: () => import("./pages/AccountSettings.vue"),
+    meta: { authRequired: true }
+  },
+  {
     path: "/journals/:id/posts",
     name: "posts",
     component: () => import("./pages/AllPosts.vue"),

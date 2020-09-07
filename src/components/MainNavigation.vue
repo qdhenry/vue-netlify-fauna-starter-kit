@@ -18,11 +18,16 @@
           {{ item.icon }}
         </v-icon>
       </v-btn>
+      <v-btn text class="overline font-weight-black" @click="logout">
+        Logout<v-icon light right>mdi-logout</v-icon>
+      </v-btn>
     </v-toolbar-items>
   </v-app-bar>
 </template>
 
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "HeaderNavigation",
   data() {
@@ -49,14 +54,8 @@ export default {
         },
         {
           title: "settings",
-          path: "account",
+          path: "settings",
           icon: "mdi-account-circle-outline",
-          authenticated: true
-        },
-        {
-          title: "Logout",
-          path: "logout",
-          icon: "mdi-logout",
           authenticated: true
         }
       ],
@@ -78,6 +77,28 @@ export default {
       ]
     };
   },
-  computed: {}
+  computed: {},
+  methods: {
+    ...mapActions("auth", [
+      "updateUserMetaData",
+      "getUserJWTToken",
+      "getCurrentUser",
+      "attemptLogout",
+      "updateUserAccount"
+    ]),
+    logout() {
+      this.attemptLogout()
+        .then(resp => {
+          alert("logged out");
+          this.$router.push("home");
+          console.log("logged out", resp);
+        })
+        .catch(error => {
+          alert("problem with logout");
+          location.reload();
+          console.error("problem with logout", error);
+        });
+    }
+  }
 };
 </script>

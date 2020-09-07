@@ -1,24 +1,31 @@
 <template>
-  <div class="dev-check stack shadow">
-    👋 Hey fellow developer! <br />It looks like you're in a local development
-    environment. Dont worry, this wont show in your production site.
-    <br />Ensure Netlify Identity is enabled and you have set your assigned
-    Netlify URL here:
-    <span v-if="siteURL" id="url-hint">Set URL: https://{{ siteURL }} </span>
-    <div id="input-container">
-      <span>https://</span>
-      <input
-        v-model="netlifyURL"
-        type="text"
-        placeholder="YOUR-NETLIFY-SITE.netlify.com"
-      />
-    </div>
-
-    <button type="button" @click="setURL()">SET</button>
-
-    ⚠️ Note: Logging in via an external provider will redirect you back to your
-    live Netlify URL.
-  </div>
+  <v-card>
+    <v-card-text>
+      <v-row>
+        <v-col cols="12">
+          👋 Hey fellow developer! <br />It looks like you're in a local
+          development environment. Dont worry, this wont show in your production
+          site.
+        </v-col>
+        <v-col cols="12">
+          <span v-if="siteURL" id="url-hint"
+            >Set URL: https://{{ siteURL }}
+          </span>
+        </v-col>
+        <v-col cols="12">
+          <div id="input-container">
+            <span>https://</span>
+            <input
+              v-model="netlifyURL"
+              type="text"
+              placeholder="YOUR-NETLIFY-SITE.netlify.com"
+            />
+          </div>
+        </v-col>
+        <v-btn color="red" type="button" @click="setURL()">SET</v-btn>
+      </v-row>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
