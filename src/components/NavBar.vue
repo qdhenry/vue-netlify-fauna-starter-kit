@@ -5,9 +5,9 @@
 
       <router-link :to="{ name: 'journals' }">📔 Your Journals</router-link>
 
-      <router-link id="profile-link" :to="{ name: 'profile' }"
-        >🆔 Profile</router-link
-      >
+      <router-link
+        id="profile-link" :to="{ name: 'profile' }"
+      >🆔 Profile</router-link>
 
       <ThemeToggle />
     </div>

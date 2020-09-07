@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import LoginSignup from "../components/LoginSignup.vue";
+import { mapGetters } from "vuex"
+import LoginSignup from "../components/LoginSignup.vue"
 
 export default {
   name: "Home",
@@ -21,10 +21,13 @@ export default {
     LoginSignup
   },
   props: {
-    msg: String
+    msg: {
+      type: String,
+      default: 'test'
+    }
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   computed: {
     ...mapGetters("auth", ["currentUser"])

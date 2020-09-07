@@ -7,7 +7,7 @@
       type="text"
       @keyup.enter="emitNewJournalTitle"
       @click="enableEditMode"
-    />
+    >
 
     <button class="update rnd-corner-a" @click="enableEditMode">
       ✏️ Rename
@@ -38,10 +38,11 @@
 export default {
   props: {
     journal: {
-      type: Object
+      type: Object,
+      default: () => { }
     }
   },
-  data() {
+  data () {
     return {
       // when in edit mode, the input for title become editable and toggle the update button
       editMode: false,
@@ -50,35 +51,35 @@ export default {
       // the card is hidden from view when the user deletes the card, this preserves component index.
       // if the index is not preserved this can cause the card state to get jumbled up and its very confusing for the end-user
       deleted: false
-    };
+    }
   },
-  mounted() {
+  mounted () {
     //set the journal title into view and into state
-    this.journalTitle = this.journal.item.data.title;
-    this.$refs.editTitle.value = this.journal.item.data.title;
+    this.journalTitle = this.journal.item.data.title
+    this.$refs.editTitle.value = this.journal.item.data.title
   },
   methods: {
-    enableEditMode() {
-      this.editMode = true;
+    enableEditMode () {
+      this.editMode = true
       // remove readonly mode so that the input is editable
-      this.$refs.editTitle.removeAttribute("readonly");
+      this.$refs.editTitle.removeAttribute("readonly")
       //set the value of the input so that the user can edit the existing title
-      this.$refs.editTitle.value = this.journal.item.data.title;
-      this.$refs.editTitle.focus();
+      this.$refs.editTitle.value = this.journal.item.data.title
+      this.$refs.editTitle.focus()
     },
-    emitNewJournalTitle() {
-      this.editMode = false;
-      this.$refs.editTitle.setAttribute("readonly", "true");
+    emitNewJournalTitle () {
+      this.editMode = false
+      this.$refs.editTitle.setAttribute("readonly", "true")
 
       this.$emit("update-journal", {
         newJournalTitle: this.journalTitle,
         journalRefID: this.journal.item.ref.value.id,
         index: this.journal.index
-      });
+      })
     },
-    deleteJournal() {
-      this.$emit("delete-journal", this.journal.item);
-      this.deleted = true;
+    deleteJournal () {
+      this.$emit("delete-journal", this.journal.item)
+      this.deleted = true
     }
   }
 };

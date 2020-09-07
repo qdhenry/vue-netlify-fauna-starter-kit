@@ -9,7 +9,7 @@
       :placeholder="post.item.data.title"
       @click="editMode = true"
       @keyup.enter="emitPostUpdate"
-    />
+    >
     <input
       v-model="updatedPost.contents"
       class="contents"
@@ -17,7 +17,7 @@
       :placeholder="post.item.data.contents"
       @click="editMode = true"
       @keyup.enter="emitPostUpdate"
-    />
+    >
     <button v-if="editMode" class="delete rnd-corner-a" @click="deleteJournal">
       🗑️ Delete
     </button>
@@ -34,10 +34,11 @@
 export default {
   props: {
     post: {
-      type: Object
+      type: Object,
+      default: () => { }
     }
   },
-  data() {
+  data () {
     return {
       editMode: false,
       updatedPost: {
@@ -45,23 +46,23 @@ export default {
         contents: ""
       },
       deleted: false
-    };
+    }
   },
-  beforeMount() {
-    this.updatedPost = this.post.item.data;
+  beforeMount () {
+    this.updatedPost = this.post.item.data
   },
   methods: {
-    emitPostUpdate() {
-      this.editMode = false;
+    emitPostUpdate () {
+      this.editMode = false
       //TODO: detect if anything has actually changed, as currently this is updating the db even if no changes were made
       this.$emit("update-post", {
         postRefID: this.post.item.ref.value.id,
         updatedPost: this.updatedPost
-      });
+      })
     },
-    deleteJournal() {
-      this.deleted = true;
-      this.$emit("delete-post", this.post);
+    deleteJournal () {
+      this.deleted = true
+      this.$emit("delete-post", this.post)
     }
   }
 };

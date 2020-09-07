@@ -1,7 +1,7 @@
 <template>
   <div>
     <label class="switch">
-      <input v-model="darkMode" type="checkbox" class="theme-switch" />
+      <input v-model="darkMode" type="checkbox" class="theme-switch">
       <span class="slider round"> <span>🌚</span> <span>🌞</span> </span>
     </label>
   </div>

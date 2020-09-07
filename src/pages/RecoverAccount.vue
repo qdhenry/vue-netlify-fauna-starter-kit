@@ -20,7 +20,7 @@
         v-model="crendentials.email"
         type="text"
         placeholder="hey@email.com"
-      />
+      >
       <button type="button" @click="requestPasswordRecover(crendentials.email)">
         Recover Account
       </button>

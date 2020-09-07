@@ -26,20 +26,20 @@
             v-model="userData.data.full_name"
             type="text"
             :placeholder="currentUser.user_metadata.full_name"
-          />
+          >
           <span class="line">
             <label for="password">Password</label>
             <i
               :class="[passwordIcon]"
               @click="hidePassword = !hidePassword"
-            ></i>
+            />
           </span>
           <input
             id="password"
             v-model="userData.password"
             :type="passwordType"
             placeholder="******"
-          />
+          >
 
           <button type="button" @click="update(userData)">Update</button>
         </form>

@@ -4,7 +4,7 @@
       <h1>📝 Your Posts</h1>
       <div id="create-post-container" class="shadow">
         <form class="new-post">
-          <input v-model="post.title" type="text" placeholder="Title" />
+          <input v-model="post.title" type="text" placeholder="Title">
           <textarea
             v-model="post.contents"
             type="text"
@@ -15,7 +15,7 @@
             name="add post"
             value="Add Post"
             @click="submit()"
-          />
+          >
         </form>
       </div>
     </div>

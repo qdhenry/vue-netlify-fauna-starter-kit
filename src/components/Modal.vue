@@ -17,7 +17,7 @@
           </svg>
         </button>
         <div class="modal-contents">
-          <slot></slot>
+          <slot />
         </div>
       </div>
     </div>
@@ -29,21 +29,22 @@ export default {
   name: "Modal",
   props: {
     buttonText: {
-      type: String
+      type: String,
+      default: 'submit'
     },
     hiddenOnStart: {
       type: Boolean,
       default: true
     }
   },
-  data() {
+  data () {
     return {
       showModal: false
-    };
+    }
   },
-  mounted() {
+  mounted () {
     if (this.hiddenOnStart === false) {
-      this.showModal = true;
+      this.showModal = true
     }
   },
   methods: {}

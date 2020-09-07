@@ -13,13 +13,13 @@
             type="text"
             placeholder="Name of new journal"
             @keyup.enter="submit()"
-          />
+          >
           <input
             name="create journal"
             value="Create Journal"
             type="button"
             @click="submit()"
-          />
+          >
         </form>
       </div>
     </div>

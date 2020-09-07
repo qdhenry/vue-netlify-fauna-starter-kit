@@ -14,36 +14,36 @@
         <v-container>
           <v-row>
             <v-col cols="12" sm="6" md="3">
-              <v-text-field label="Regular"></v-text-field>
+              <v-text-field label="Regular" />
             </v-col>
           </v-row>
         </v-container>
         <h2>👋 Register Here</h2>
         <label for="name">Name</label>
-        <v-text-field id="name" v-model="crendentials.name"></v-text-field>
+        <v-text-field id="name" v-model="crendentials.name" />
         <input
           id="name"
           v-model="crendentials.name"
           type="text"
           placeholder="Arnold Schwarzenegger"
-        />
+        >
         <label for="email">Email</label>
         <input
           id="email"
           v-model="crendentials.email"
           type="text"
           placeholder="arnie@terminator.com"
-        />
+        >
         <span class="line">
           <label for="password">Password</label>
-          <i :class="[passwordIcon]" @click="hidePassword = !hidePassword"></i>
+          <i :class="[passwordIcon]" @click="hidePassword = !hidePassword" />
         </span>
         <input
           id="password"
           v-model="crendentials.password"
           :type="passwordType"
           placeholder="******"
-        />
+        >
         <button type="button" @click="signup()">Sign Up</button>
         <p class="message">
           Already registered?
@@ -63,18 +63,18 @@
           v-model="crendentials.email"
           type="text"
           placeholder="hey@email.com"
-        />
+        >
 
         <span class="line">
           <label for="password">Password</label>
-          <i :class="[passwordIcon]" @click="hidePassword = !hidePassword"></i>
+          <i :class="[passwordIcon]" @click="hidePassword = !hidePassword" />
         </span>
 
         <input
           v-model="crendentials.password"
           :type="passwordType"
           placeholder="******"
-        />
+        >
         <router-link to="recover">Forgot your password?</router-link>
         <button type="button" @click="login()">Login</button>
         <button type="button" @click="loginExternal()">

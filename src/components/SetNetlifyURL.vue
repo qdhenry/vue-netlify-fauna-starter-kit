@@ -3,13 +3,14 @@
     <v-card-text>
       <v-row>
         <v-col cols="12">
-          👋 Hey fellow developer! <br />It looks like you're in a local
+          👋 Hey fellow developer! <br>It looks like you're in a local
           development environment. Dont worry, this wont show in your production
           site.
         </v-col>
         <v-col cols="12">
-          <span v-if="siteURL" id="url-hint"
-            >Set URL: https://{{ siteURL }}
+          <span
+            v-if="siteURL" id="url-hint"
+          >Set URL: https://{{ siteURL }}
           </span>
         </v-col>
         <v-col cols="12">
@@ -19,7 +20,7 @@
               v-model="netlifyURL"
               type="text"
               placeholder="YOUR-NETLIFY-SITE.netlify.com"
-            />
+            >
           </div>
         </v-col>
         <v-btn color="red" type="button" @click="setURL()">SET</v-btn>
