@@ -48,7 +48,7 @@ const routes = [{
   {
     path: "/settings",
     name: "settings",
-    component: () => import("./pages/Profile.vue"),
+    component: () => import("./pages/AccountSettings.vue"),
     meta: {
       authRequired: true
     }
