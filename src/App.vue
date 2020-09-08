@@ -2,24 +2,18 @@
   <v-app>
     <MainNavigation />
     <v-main>
-      <NavBar />
       <v-container>
         <router-view />
       </v-container>
-      <Footer />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue"
-import Footer from "./components/Footer.vue"
 import MainNavigation from "./components/MainNavigation.vue"
 
 export default {
   components: {
-    NavBar,
-    Footer,
     MainNavigation
   }
 };
@@ -37,6 +31,7 @@ export default {
 }
 span.v-btn__content {
   font-family: "futura-pt", "Arial Narrow" !important;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 0.9em;
 }
 </style>

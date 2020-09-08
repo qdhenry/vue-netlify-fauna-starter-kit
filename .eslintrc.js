@@ -19,6 +19,15 @@ module.exports = {
 	rules: {
 		'vue/singleline-html-element-content-newline': 'off',
     'vue/multiline-html-element-content-newline': 'off',
+      "vue/html-self-closing": ["error", {
+    "html": {
+      "void": "any",
+      "normal": "any",
+      "component": "any"
+    },
+    "svg": "always",
+    "math": "always"
+  }],
     "vue/max-attributes-per-line": ["error", {
     "singleline": 10,
     "multiline": {

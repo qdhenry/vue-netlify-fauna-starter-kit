@@ -1,10 +1,10 @@
 /*
-This is a Netlify serverless function that first generates a new FaunaDB account based on the Netlify unique user ID. 
+This is a Netlify serverless function that first generates a new FaunaDB account based on the Netlify unique user ID.
 It will then update the Netlify user_metadata account with the FaunaDB token which is embedded in the user JWT for
 future authentication sessions.
 
-This function is triggered on a successfully email signup. This does not get triggered on external signups. Read more 
-about event-triggered functions here: https://docs.netlify.com/functions/trigger-on-events/#available-triggers 
+This function is triggered on a successfully email signup. This does not get triggered on external signups. Read more
+about event-triggered functions here: https://docs.netlify.com/functions/trigger-on-events/#available-triggers
 */
 
 'use strict'
@@ -16,7 +16,6 @@ const q = faunadb.query
 const client = new faunadb.Client({
 	secret: process.env.FAUNADB_SERVER_SECRET,
 })
-console.log('CLIENT', client)
 
 /**
  * create and store Netlify metadata in a new user FaunaDB record.
@@ -26,7 +25,7 @@ console.log('CLIENT', client)
  * @param {string} - password
  * @return {promise <object>} - FaunaDB response object e.g
  * {
-  ref: Ref(Collection("users"), "262617811824673300"), 
+  ref: Ref(Collection("users"), "262617811824673300"),
   ts: 1586710712280000,
   data: {
     id: 'e362dc96-b891-4c81-9df4-506215498f39',

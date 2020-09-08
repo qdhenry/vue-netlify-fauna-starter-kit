@@ -14,7 +14,7 @@
         class="overline font-weight-black"
       >
         {{ item.title }}
-        <v-icon light right>{{ item.icon }}</v-icon>
+        <v-icon light right small>{{ item.icon }}</v-icon>
       </v-btn>
     </v-toolbar-items>
   </v-app-bar>
@@ -50,13 +50,13 @@ export default {
         {
           title: "settings",
           path: "settings",
-          icon: "mdi-account-cog",
+          icon: "mdi-account-circle-outline",
           authenticated: true,
         },
         {
           title: "Logout",
           path: "logout",
-          icon: "mdi-account-circle-outline",
+          icon: "mdi-logout",
           authenticated: false,
         },
       ],
@@ -107,5 +107,20 @@ export default {
 .v-toolbar__content,
 .v-toolbar__extension {
   padding-right: 0px !important;
+}
+.v-application .font-weight-black {
+  font-family: "futura-pt", "Arial Narrow" !important;
+}
+html body .v-application {
+  font-family: "futura-pt", "Arial Narrow" !important;
+}
+h1,
+h2,
+h3,
+p,
+a,
+input,
+textarea {
+  font-family: "futura-pt", "Arial Narrow" !important;
 }
 </style>

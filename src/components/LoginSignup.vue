@@ -3,7 +3,7 @@
     class="login-page"
     align="center"
     justify="center"
-    style="min-height:500px"
+    style="min-height: 500px"
   >
     <div class="form">
       <v-form
@@ -21,19 +21,19 @@
         <h2>👋 Register Here</h2>
         <label for="name">Name</label>
         <v-text-field id="name" v-model="crendentials.name" />
-        <input
+        <v-text-field
           id="name"
           v-model="crendentials.name"
           type="text"
           placeholder="Arnold Schwarzenegger"
-        >
+        ></v-text-field>
         <label for="email">Email</label>
-        <input
+        <v-text-field
           id="email"
           v-model="crendentials.email"
           type="text"
           placeholder="arnie@terminator.com"
-        >
+        ></v-text-field>
         <span class="line">
           <label for="password">Password</label>
           <i :class="[passwordIcon]" @click="hidePassword = !hidePassword" />
@@ -43,7 +43,7 @@
           v-model="crendentials.password"
           :type="passwordType"
           placeholder="******"
-        >
+        />
         <button type="button" @click="signup()">Sign Up</button>
         <p class="message">
           Already registered?
@@ -63,18 +63,18 @@
           v-model="crendentials.email"
           type="text"
           placeholder="hey@email.com"
-        >
+        />
 
         <span class="line">
           <label for="password">Password</label>
           <i :class="[passwordIcon]" @click="hidePassword = !hidePassword" />
         </span>
 
-        <input
+        <v-text-field
           v-model="crendentials.password"
           :type="passwordType"
           placeholder="******"
-        >
+        ></v-text-field>
         <router-link to="recover">Forgot your password?</router-link>
         <button type="button" @click="login()">Login</button>
         <button type="button" @click="loginExternal()">
@@ -94,15 +94,15 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-import SetNetlifyURL from "./SetNetlifyURL.vue";
+import { mapActions, mapGetters } from "vuex"
+import SetNetlifyURL from "./SetNetlifyURL.vue"
 
 export default {
   name: "LoginSignup",
   components: {
     SetNetlifyURL
   },
-  data() {
+  data () {
     return {
       crendentials: {
         name: "",
@@ -111,15 +111,15 @@ export default {
       },
       hidePassword: true,
       mode: "login"
-    };
+    }
   },
   computed: {
     ...mapGetters("app", ["isDevEnvironment"]),
-    passwordType() {
-      return this.hidePassword ? "password" : "text";
+    passwordType () {
+      return this.hidePassword ? "password" : "text"
     },
-    passwordIcon() {
-      return this.hidePassword ? "eye-open" : "eye-closed";
+    passwordIcon () {
+      return this.hidePassword ? "eye-open" : "eye-closed"
     }
   },
   methods: {
@@ -128,37 +128,37 @@ export default {
       "attemptSignup",
       "attemptExternalLogin"
     ]),
-    toggleMode() {
+    toggleMode () {
       this.mode === "register"
         ? (this.mode = "login")
-        : (this.mode = "register");
+        : (this.mode = "register")
     },
-    signup() {
+    signup () {
       this.attemptSignup(this.crendentials)
         .then(response => {
-          alert(`Confirmation email has been sent to you! ${response.id}`);
-          console.log(response);
+          alert(`Confirmation email has been sent to you! ${response.id}`)
+          console.log(response)
         })
         .catch(error => {
           alert(`Somethings gone wrong signing up.
-                 Error: ${error}`);
-          console.error(error, "Somethings gone wrong signing up");
-        });
+                 Error: ${error}`)
+          console.error(error, "Somethings gone wrong signing up")
+        })
     },
-    login() {
+    login () {
       this.attemptLogin({ ...this.crendentials })
         .then(() => {
-          alert(`You have signed in!`);
-          this.$router.push(this.$route.query.redirect || "journals");
+          alert(`You have signed in!`)
+          this.$router.push(this.$route.query.redirect || "journals")
         })
         .catch(error => {
           alert(`Somethings gone wrong logging in.
-                 Error: ${error}`);
-          console.error(error, "Somethings gone wrong logging in");
-        });
+                 Error: ${error}`)
+          console.error(error, "Somethings gone wrong logging in")
+        })
     },
-    loginExternal() {
-      this.attemptExternalLogin("Google");
+    loginExternal () {
+      this.attemptExternalLogin("Google")
     }
   }
 };

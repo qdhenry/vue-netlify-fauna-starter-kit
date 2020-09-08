@@ -24,7 +24,7 @@ const routes = [{
   {
     path: "/dashboard",
     name: "dashboard",
-    component: () => import("./pages/Dashboard.vue"),
+    component: () => import("./pages/Home.vue"),
     meta: {
       authRequired: true
     }
@@ -32,7 +32,7 @@ const routes = [{
   {
     path: "/products",
     name: "products",
-    component: () => import("./pages/Products.vue"),
+    component: () => import("./pages/AllJournals.vue"),
     meta: {
       authRequired: true
     }
@@ -48,7 +48,7 @@ const routes = [{
   {
     path: "/settings",
     name: "settings",
-    component: () => import("./pages/AccountSettings.vue"),
+    component: () => import("./pages/Profile.vue"),
     meta: {
       authRequired: true
     }

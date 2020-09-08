@@ -6,7 +6,6 @@ import { q, client } from "../helpers/init-db";
  */
 export function createJournal(journalData) {
   const me = q.Identity();
-
   return client
     .query(
       q.Create(q.Collection("journals"), {
