@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <MainNavigation />
-    <v-main>
+    <v-main style="background: #f7f7f7">
       <v-container>
         <router-view />
       </v-container>
@@ -33,5 +33,8 @@ span.v-btn__content {
   font-family: "futura-pt", "Arial Narrow" !important;
   font-weight: 600;
   font-size: 0.9em;
+}
+header.v-sheet.theme--light.elevation-1.v-toolbar.v-app-bar.v-app-bar--fixed {
+  box-shadow: 1px 1px 1px silver !important;
 }
 </style>
